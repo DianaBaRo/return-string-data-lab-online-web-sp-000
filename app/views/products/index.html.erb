@@ -1,14 +1,15 @@
+<h1>Product Inventory</h1>
+
 <% @products.each do |product| %>
-  <h1><%= product.name %></h1>
-  <div id="details-<%= product.id %>"><%= truncate product.description %></div>
-  <button class="js-more" data-id="<%= product.id %>">More Info...</button>
+  <div id="details-<%= product.id %>"><%= product.name %> - <%= truncate product.description %></div>
+  <button class="js-more" data-id="<%= product.id %>">More...</button>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
   $(function () {
     $(".js-more").on('click', function() {
       // get the id from the data attribute
-      let id = $(this).data("id");
+      var id = $(this).data("id");
       $.get("/products/" + id + "/description", function(data) {
         $("#details-" + id).append(data);
       });
