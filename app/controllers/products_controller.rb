@@ -5,10 +5,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.save
-
-    redirect_to product_path(@product)
+    @product = Product.create(product_params)
+    if @product.save
+      redirect_to products_path
+    else
+      render 'new'
+    end
   end
 
   def index
