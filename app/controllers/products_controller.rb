@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.build(product_params)
+    @product = Product.create(product_params)
     @product.save
 
     redirect_to product_path(@product)
