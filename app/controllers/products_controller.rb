@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def show
+
+  end
+
   def create
     @product = Product.create(product_params)
     @product.save
